@@ -3,7 +3,7 @@ require("dotenv").config(); // Load environment variables
 const { Sequelize } = require("sequelize");
 
 // Create a Sequelize instance with MySQL connection using .env variables
-const sequelize = new Sequelize(process.env.MYSQL_URL);
+const sequelize = new Sequelize("mysql://root:rKxEQFcUQmMGJnnLnGBigKFbKVrOfPRK@ballast.proxy.rlwy.net:55245/railway");
 
 // Test the database connection
 const testConnection = async () => {

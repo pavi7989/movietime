@@ -64,7 +64,7 @@ const swaggerOptions = {
 
 const setupSwagger = (app) => {
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(swaggerOptions)));
-    console.log("✅ Swagger API Docs available at: http://localhost:5000/api-docs");
+    console.log("✅ Swagger API Docs available at: https://movietime-production-9d8e.up.railway.app/api-docs");
 };
 
 module.exports = setupSwagger;

@@ -175,6 +175,7 @@ router.get("/users", async (req, res) => {
  * /auth/users/{id}:
  *   put:
  *     summary: Update user details
+ *     tags: [Auth]
  *     description: Updates an existing user's information.
  *     parameters:
  *       - in: path

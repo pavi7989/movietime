@@ -1,5 +1,6 @@
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+const Movie = require("../models/Movie");
 
 const swaggerOptions = {
     definition: {
@@ -22,11 +23,43 @@ const swaggerOptions = {
                         password: { type: "string" },
                         reEnterPassword: {type: "string"}
                     }
+                },
+                // Movie Schema
+                Movie: {
+                    type: "object",
+                    required: ["name", "description", "rating", "genres"],
+                    properties: {
+                        id: { type: "integer", readOnly: true },
+                        name: { type: "string" },
+                        description: { type: "string" },
+                        rating: { type: "number" },
+                        genres: { type: "string" },
+                        trailer: { type: "string" },
+                        wishlisted: { type: "boolean" },
+                        imagePath: { type: "string" },
+                    }
+                },
+                // Profile Schema
+                Profile: {
+                    type: "object",
+                    required: ["name", "email", "phone", "address", "bio"],
+                    properties: {
+                        id: { type: "integer", readOnly: true },
+                        name: { type: "string" },
+                        email: { type: "string" },
+                        phone: { type: "string" },
+                        address: { type: "string" },
+                        bio: { type: "string" },
+                        profileImage: { type: "string" },
+                    }
                 }
             }
         }
     },
-    apis: ["./src/routes/*.js"]
+    apis: ["./src/routes/authRoutes.js",
+        "./src/routes/movieRoutes.js", // Explicitly include movie routes
+        "./src/routes/profileRoutes.js" // Explicitly include profile routes
+        ]
 };
 
 const setupSwagger = (app) => {

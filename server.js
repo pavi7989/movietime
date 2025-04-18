@@ -7,9 +7,13 @@ const movieRoutes = require("./src/routes/movieRoutes"); // Import movie routes
 const setupSwagger = require("./src/config/swagger"); // Setup Swagger for API Docs
 const profileRoutes= require("./src/routes/profileRoutes");
 const path = require("path");
+const cors = require("cors");
+
 require("dotenv").config();
 
 const app = express();
+app.use(cors());
+
 app.use(express.json());
 
 // ✅ Serve image folder publicly (added)

@@ -10,7 +10,7 @@ const swaggerOptions = {
             description: "API Documentation for the Movie Application",
             version: "1.0.0",
         },
-        servers: [{ url: "http://localhost:5000" }],
+        servers: [{ url: "https://movietime-production-9d8e.up.railway.app" }],
         components: {
             schemas: {
                 User: {

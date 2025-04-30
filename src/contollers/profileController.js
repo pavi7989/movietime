@@ -85,11 +85,21 @@ exports.updateProfile = async (req, res) => {
 
 
 
+const fs = require('fs');
+
 exports.deleteProfile = async (req, res) => {
     try {
         const { id } = req.params;
         const profile = await Profile.findByPk(id);
         if (!profile) return res.status(404).json({ error: "Profile not found" });
+
+        // Delete the image file if exists
+        if (profile.profileImage) {
+            const imagePath = path.join(__dirname, "../uploads/profiles", profile.profileImage);
+            if (fs.existsSync(imagePath)) {
+                fs.unlinkSync(imagePath);
+            }
+        }
 
         await profile.destroy();
         res.status(200).json({ message: "Profile deleted successfully" });

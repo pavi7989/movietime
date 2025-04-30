@@ -53,17 +53,27 @@ router.post("/create", upload.single("profileImage"), createProfile);
 
 /**
  * @swagger
- * /userprofile/profiles:
+ * /userprofile/profile/{id}:
  *   get:
- *     summary: Get all profiles
+ *     summary: Get a profile by ID
  *     tags: [Profiles]
- *     description: Fetches all user profiles.
+ *     description: Fetches a user profile by its ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID of the profile to retrieve
  *     responses:
  *       200:
- *         description: Profiles retrieved successfully
+ *         description: Profile retrieved successfully
+ *       404:
+ *         description: Profile not found
  *       500:
  *         description: Internal server error
  */
+
 router.get("/profiles", getProfiles);
 
 /**
